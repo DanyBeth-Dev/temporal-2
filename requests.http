@@ -1,0 +1,29 @@
+###
+GET http://localhost:3001 HTTP/1.1
+
+###
+GET http://localhost:3001/api/notes HTTP/1.1
+
+###
+GET http://localhost:3001/api/notes/62c76b0f1602373fa0f0954f HTTP/1.1
+
+###
+POST http://localhost:3001/api/notes HTTP/1.1
+Content-Type: application/json
+
+{
+  "content": "lol",
+  "important": true
+}
+
+###
+PUT http://localhost:3001/api/notes/62c76b0f1602373fa0f0954f HTTP/1.1
+Content-Type: application/json
+
+{
+  "content": "This is a super test",
+  "important": true
+}
+
+###
+DELETE http://localhost:3001/api/notes/62c76275530172f9c658f0c4 HTTP/1.1
