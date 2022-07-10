@@ -56,7 +56,7 @@ app.post('/api/notes', (request, response, next) => {
 
 app.put('/api/notes/:id', (request, response, next) => {
   const { content, important } = request.body
-  
+
   Note
     .findByIdAndUpdate(request.params.id, { content, important }, { new: true, runValidators: true, context: 'query' })
     .then(updatedNote => response.json(updatedNote))
@@ -66,7 +66,7 @@ app.put('/api/notes/:id', (request, response, next) => {
 app.delete('/api/notes/:id', (request, response, next) => {
   Note
     .findByIdAndRemove(request.params.id)
-    .then(result => response.status(204).end())
+    .then(() => response.status(204).end())
     .catch(error => next(error))
 })
 
@@ -90,6 +90,7 @@ const errorHandler = (error, request, response, next) => {
 // this has to be the last loaded middleware.
 app.use(errorHandler)
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT
 
 app.listen(PORT, () => {
